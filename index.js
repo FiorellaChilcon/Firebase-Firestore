@@ -40,10 +40,10 @@ const renderCafe = (doc) => {
 db.collection('cafes').orderBy('city').onSnapshot((snapshot) => {
     let changes = snapshot.docChanges();
     changes.forEach((change) => {
-        if (change.type = 'added') {
+        if (change.type == 'added') {
             renderCafe(change.doc);
-        } else if (change.type = 'removed') {
-            let li = document.querySelector(`data-id=${change.doc.id}`);
+        } else if (change.type == 'removed') {
+            let li = document.querySelector(`[data-id=${change.doc.id}]`);
             cafelist.removeChild(li);
         }
     });
