@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="new.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>CAFE'S REVIEW</h1>
+    <form id="add-cafe-form">
+        <input type="text" name="name" placeholder="Cafe name">
+        <input type="text" name="city" placeholder="Cafe city">
+        <button>Add Cafe</button>
+    </form>
+    <ul id="cafe-list"></ul>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCzVn9uVPokK61K7DKAhlTgDMUDphuORSo",
+            authDomain: "firelarn.firebaseapp.com",
+            databaseURL: "https://firelarn.firebaseio.com",
+            projectId: "firelarn",
+            storageBucket: "firelarn.appspot.com",
+            messagingSenderId: "104893470591",
+            appId: "1:104893470591:web:ba717da93dc253d3156c4a",
+            measurementId: "G-W93G5VSMPT"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        // db.settings({ timestampsInSnapshots: true })
+    </script>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

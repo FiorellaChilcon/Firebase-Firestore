@@ -1,0 +1,14 @@
+h1{
+    text-align: center;
+}
+ul{
+    border-radius: 3vh;
+    list-style: none;
+    background-color: rgb(247, 199, 111);
+    padding: 5vh;
+}
+li{
+    padding: 1vh;
+    display: flex;
+    flex-direction: column;
+}
