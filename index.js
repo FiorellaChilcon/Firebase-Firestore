@@ -4,22 +4,45 @@
 const cafelist = document.querySelector('#cafe-list');
 const addCafeForm = document.getElementById('add-cafe-form');
 const renderCafe = (doc) => {
-    const deleteButton = document.createElement('button')
+    const deleteButton = document.createElement('i');
+    const editButton = document.createElement('i');
+    const saveButton = document.createElement('i')
     const li = document.createElement('li');
     const name = document.createElement('span');
     const city = document.createElement('span');
     li.setAttribute('data-id', doc.id);
     name.textContent = doc.data().name;
     city.textContent = doc.data().city;
-    deleteButton.textContent = 'x';
+    deleteButton.className = 'fas fa-trash';
+    editButton.className = 'fas fa-edit';
+    saveButton.className = 'fas fa-save';
     li.appendChild(name);
     li.appendChild(city);
     li.appendChild(deleteButton);
+    li.appendChild(editButton);
     cafelist.appendChild(li);
     deleteButton.addEventListener('click', (e) => {
         e.stopPropagation();
         const id = e.target.parentElement.getAttribute('data-id');
         db.collection('cafes').doc(id).delete();
+    });
+    const textareaCity = document.createElement('textarea');
+        textareaCity.className = 'textarea-edit';
+    editButton.addEventListener('click', () => {
+        textareaCity.value = doc.data().city;
+        li.replaceChild(textareaCity, city);
+        textareaCity.focus();
+        li.appendChild(saveButton);
+    });
+    saveButton.addEventListener('click', (e) => {
+        const id = e.target.parentElement.getAttribute('data-id');
+        li.removeChild(saveButton);
+        const city = document.createElement('span');
+        city.textContent = textareaCity.value;
+        li.replaceChild(city, textareaCity);
+        db.collection('cafes').doc(id).update({
+            city: textareaCity.value
+        })
     });
 }
 // ______________making queries______________

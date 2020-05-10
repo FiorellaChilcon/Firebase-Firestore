@@ -12,3 +12,51 @@ li{
     display: flex;
     flex-direction: column;
 }
+li:hover{
+    border-bottom: solid 1px rgb(100, 100, 100);
+}
+.fa-trash, .fa-edit{
+    /* position: absolute; */
+    margin: 0.4vh;
+    width: 1.5vw;
+    font-size: 2vh;
+    align-self: flex-end;
+    color: rgb(91, 92, 92);
+}
+.fas:hover{
+    color: rgb(22, 22, 22);
+}
+#add-cafe-form button{
+    border: none;
+    background: none;
+    width: 5vw;
+    padding: 0.7vh;
+    font-size: 1.5vh;
+}
+#add-cafe-form button:hover{
+    background-color: rgba(250, 103, 50, 0.37);
+}
+form{
+    margin: 8vh;
+    text-align: center;
+}
+input{
+    width: 16vw;
+    padding: 0.7vh;
+    border: none;
+    border-bottom: solid 1px rgb(100, 100, 100);
+    margin: 1vh;
+}
+input:hover{
+    border-color: coral;
+}
+.textarea-edit{
+    width: 50vw;
+    height: 15vh;
+    background: none;
+    padding: 0.7vh;
+    border: none;
+}
+input:focus, textarea:focus{
+    outline: none;
+}
