@@ -26,22 +26,17 @@ const renderCafe = (doc) => {
         const id = e.target.parentElement.getAttribute('data-id');
         db.collection('cafes').doc(id).delete();
     });
-    const textareaCity = document.createElement('textarea');
-        textareaCity.className = 'textarea-edit';
     editButton.addEventListener('click', () => {
-        textareaCity.value = doc.data().city;
-        li.replaceChild(textareaCity, city);
-        textareaCity.focus();
-        li.appendChild(saveButton);
+        city.contentEditable = 'true';
+         city.focus();
+         li.appendChild(saveButton);
     });
     saveButton.addEventListener('click', (e) => {
+        city.contentEditable = 'false';
         const id = e.target.parentElement.getAttribute('data-id');
         li.removeChild(saveButton);
-        const city = document.createElement('span');
-        city.textContent = textareaCity.value;
-        li.replaceChild(city, textareaCity);
         db.collection('cafes').doc(id).update({
-            city: textareaCity.value
+            city: city.textContent
         })
     });
 }
@@ -60,7 +55,7 @@ const renderCafe = (doc) => {
 // ______________real time data listener______________
 //  for that we need to hear the changes automatically from firebase
 // onSnapshot is to hear when there's a change on the database
-db.collection('cafes').orderBy('city').onSnapshot((snapshot) => {
+db.collection('cafes').orderBy('name').onSnapshot((snapshot) => {
     let changes = snapshot.docChanges();
     changes.forEach((change) => {
         if (change.type == 'added') {
@@ -84,6 +79,7 @@ addCafeForm.addEventListener('submit', (e) => {
     db.collection('cafes').add({
         name: addCafeForm.name.value,
         city: addCafeForm.city.value,
+        // timestamp: firebase.firestore.FieldValue.serverTimestamp()
     });
     addCafeForm.reset();
 });

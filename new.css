@@ -50,13 +50,6 @@ input{
 input:hover{
     border-color: coral;
 }
-.textarea-edit{
-    width: 50vw;
-    height: 15vh;
-    background: none;
-    padding: 0.7vh;
-    border: none;
-}
-input:focus, textarea:focus{
+input:focus{
     outline: none;
 }
