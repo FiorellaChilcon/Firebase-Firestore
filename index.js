@@ -23,8 +23,6 @@ const renderCafe = (doc) => {
     cafelist.appendChild(li);
     deleteButton.addEventListener('click', (e) => {
         e.stopPropagation();
-        const id = e.target.parentElement.getAttribute('data-id');
-        db.collection('cafes').doc(id).delete();
     });
     editButton.addEventListener('click', () => {
         city.contentEditable = 'true';
